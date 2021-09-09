@@ -1,4 +1,4 @@
-# Subtitle Import Tool
+# Subtitle Copy Tool
 #===================================================#
 # Parameters										#
 #===================================================#
@@ -7,7 +7,7 @@
 [String]$destBaseDir = 'Z:\Media\Movies\'
 [String[]]$subFilter = @('*english.srt', '*turkish.srt', '*czech.srt', '*slovak.srt')
 [String[]]$extFilter = @('*.mkv', '*.mp4')
-[Int]$downloadedDays = -14
+[Int]$downloadedDays = -7
 
 # Define Class
 Class subData {
@@ -30,7 +30,8 @@ $subObject = @()
 #===================================================#
 # Logic     										#
 #===================================================#
-Write-Host -backgroundcolor "white" -foregroundcolor "black" 'Copying Subtitles from ' $srcBaseDir ' to ' $destBaseDir
+Write-Host -backgroundcolor "white" -foregroundcolor "black" 'Copying Subtitles from movies downloaded within the last ' $downloadedDays.ToString().Substring(1) ' days from ' $srcBaseDir ' to ' $destBaseDir
+Write-Host -backgroundcolor "white" -foregroundcolor "black" 'Press any key to continue...'
 [System.Console]::ReadLine()
 
 # Build array of directorys ending in "-RARBG"
